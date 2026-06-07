@@ -51,7 +51,7 @@ const mobilePunchIndicator = [
   "./images/icons/mobile/down_arrow.png",
 ];
 
-const audioPunch = new Audio("../../sounds/punch.mp3");
+const audioPunch = new Audio("./sounds/punch.mp3");
 const punchGrunt = new Audio("../../sounds/punchGrunt_1.mp3");
 const playerPunched = new Audio("../../sounds/punchedPlayer.mp3");
 const punchBagPunche = new Audio("../../sounds/punch-bag-punch.mp3");
@@ -316,7 +316,7 @@ function pause(pauseByMneu) {
 
 function drawCenario() {
   if (points <= 10) {
-    cenarioBody.style.backgroundImage = `url("../.${landscapesImgaes[0]}")`;
+    cenarioBody.style.backgroundImage = `url("./.${landscapesImgaes[0]}")`;
 
     nextCenario = {
       label: "Academia de bairro - Você está evoluindo!",
