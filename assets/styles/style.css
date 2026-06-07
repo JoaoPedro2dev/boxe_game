@@ -563,8 +563,9 @@ body {
     top: 38%;
   }
 
-  /* Barra de redraw — estilo barra (não círculo) */
   #redraw-punch-box {
+    border: 1px solid black;
+
     top: 34%;
     left: 50%;
     transform: translateX(-50%);
@@ -620,6 +621,9 @@ body {
     bottom: auto;
     top: auto;
     bottom: 5%;
+
+    left: 50%;
+    transform: translateX(-50%);
 
     width: auto;
     gap: 30px;
@@ -696,6 +700,10 @@ body {
     height: clamp(160px, 100%, 400px);
   }
 
+  #settings_view > p {
+    font-size: small;
+  }
+
   .point_coin {
     left: 42%;
     width: 48px;
@@ -703,6 +711,20 @@ body {
   .lose_point_coin {
     left: 35%;
     width: 48px;
+  }
+
+  #redraw-punch-box {
+    border: 1px solid black;
+    top: 33%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 6px;
+    border-radius: 10px;
+  }
+
+  #redraw-punch-box > #timer-redraw-punch {
+    height: 6px;
   }
 }
 
