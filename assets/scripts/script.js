@@ -341,7 +341,7 @@ function drawCenario() {
     cenarioBody.style.backgroundImage = `url("${landscapesImgaes[2]}")`;
     nextCenario = {
       label: "Elite GYM - Mais alto nível",
-      img: landscapesImgaes[2],
+      img: landscapesImgaes[3],
       atual: 3,
     };
   } else if (points > 30 && points <= 40) {
@@ -351,7 +351,7 @@ function drawCenario() {
     cenarioBody.style.backgroundImage = `url("${landscapesImgaes[3]}")`;
     nextCenario = {
       label: "Arena de campeonato - Foco máximo!",
-      img: landscapesImgaes[3],
+      img: landscapesImgaes[4],
       atual: 4,
     };
   } else if (points > 40) {
