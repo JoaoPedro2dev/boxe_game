@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/assets/styles/style.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="./assets/scripts/script.js" defer></script>
+
+    <title>BOXE GAME</title>
+  </head>
+  <body>
+    <div id="cenario">
+      <button id="start_btn">
+        <img
+          src="./images/icons/play-icon.png"
+          alt="botão de pause e despause"
+        />
+      </button>
+
+      <button id="settings_btn">
+        <img
+          src="./images/icons/settings-icon.png"
+          alt="botão de configurações"
+        />
+      </button>
+
+      <div id="settings_view">
+        <p>Proximo nivel - <span>Difícil</span></p>
+        <img
+          src="./images/landscapes/cenario_2.webp"
+          alt="imagem de referência próximo nivel"
+        />
+
+        <a href="./onboarding/welcome.html">Ir para tuturial</a>
+
+        <button id="delete-save-game">Excluir histórico de jogo</button>
+      </div>
+
+      <ul id="infos_player">
+        <li>
+          <img
+            src="./images/icons/points_icon.png"
+            alt="icone de pontuação"
+            class="infos_icon"
+          />
+          <p id="points">0</p>
+        </li>
+
+        <li>
+          <div id="points_suporte_icons">
+            <p>0</p>
+          </div>
+          <img
+            src="./images/icons/success_punch_icon.png"
+            alt="icone de golpes bem sucedidos"
+            class="infos_icon"
+          />
+          <p id="hits">0</p>
+        </li>
+
+        <li>
+          <img
+            src="./images/icons/fail_punch_icon.png"
+            alt="icone de golpes mal sucedidos"
+            class="infos_icon"
+          />
+          <p id="wrong_punches">0</p>
+        </li>
+      </ul>
+
+      <ul id="remaining_lives"></ul>
+
+      <div id="redraw-punch-box">
+        <span id="timer-redraw-punch"></span>
+      </div>
+
+      <div id="hitBox">
+        <div id="personagem">
+          <img src="./images/player/base.webp" alt="Personagem boxeador" />
+        </div>
+        <div id="saco">
+          <img src="./images/punchBag/punch_bag.webp" alt="Saco de pancadas" />
+        </div>
+      </div>
+
+      <div id="punch_box">
+        <p id="luckyAttack"></p>
+      </div>
+
+      <div id="punch_box_mobile">
+        <img id="luckyAttack_mobile" src="" alt="" />
+      </div>
+    </div>
+
+    <div id="warning">
+      <strong>Gire seu celular na vertical</strong>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/styles/onboarding.css" />
+    <title>Welcome</title>
+  </head>
+  <body>
+    <main class="onboarding">
+      <div class="progress">
+        <div class="progress-bar"></div>
+      </div>
+
+      <section class="slide active" data-slide="1">
+        <span class="tag">🥊 BOXE GAME</span>
+
+        <h1>Bem-vindo ao Ringue</h1>
+
+        <p>
+          Prepare-se para testar seus reflexos, velocidade e precisão. Seu
+          objetivo é executar os golpes corretos o mais rápido possível,
+          mantendo sequências de acertos e evoluindo cada vez mais.
+        </p>
+
+        <p>
+          Quanto mais concentrado você estiver, maiores serão suas chances de
+          alcançar a perfeição.
+        </p>
+
+        <div class="buttons">
+          <button class="next-btn">CONTINUAR ▶</button>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="2">
+        <span class="tag">⚡ MECÂNICA</span>
+
+        <h1>Como Jogar</h1>
+
+        <p>O jogo sempre inicia pausado.</p>
+
+        <p class="can-mobile">
+          Utilize o botão ▶ localizado no canto superior direito para iniciar ou
+          pausar a partida quando desejar.
+        </p>
+
+        <p class="can-mobile">
+          Durante o combate, um número será exibido no centro da tela. Você
+          deverá pressionar a tecla correspondente antes que o tempo termine.
+        </p>
+
+        <p>⏳ Se demorar muito, um novo golpe será sorteado automaticamente.</p>
+
+        <div class="buttons">
+          <button class="prev-btn">◀ VOLTAR</button>
+          <button class="next-btn">CONTINUAR ▶</button>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="3">
+        <span class="tag">🎮 COMANDOS</span>
+
+        <h1>Golpes</h1>
+
+        <p class="can-mobile">
+          Utilize as teclas numéricas para executar os golpes:
+        </p>
+
+        <p class="can-mobile">
+          🥊 <strong>1</strong> → Jab<br />
+          🥊 <strong>2</strong> → Direto<br />
+          🥊 <strong>3</strong> → Cruzado de esquerda<br />
+          🥊 <strong>4</strong> → Cruzado de direita
+        </p>
+
+        <p>
+          Observe o padrão exibido na tela e responda rapidamente com o golpe
+          correto.
+        </p>
+
+        <div class="buttons">
+          <button class="prev-btn">◀ VOLTAR</button>
+          <button class="next-btn">CONTINUAR ▶</button>
+        </div>
+      </section>
+
+      <section class="slide" data-slide="4">
+        <span class="tag">🏆 PROGRESSÃO</span>
+
+        <h1>Pontuação e Vidas</h1>
+
+        <p>
+          🔥 A cada <strong>10 golpes consecutivos sem errar</strong>, você
+          ganha uma medalha.
+        </p>
+
+        <p>
+          🏅 A cada <strong>10 medalhas</strong>, você sobe de categoria,
+          desbloqueando novos cenários e aumentando a velocidade do jogo.
+        </p>
+
+        <p>
+          ❤️ Seu lutador possui <strong>cinco pontos de vida</strong>. Cada erro
+          faz você perder uma vida.
+        </p>
+
+        <p>
+          💥 Quando as vidas chegam a zero, seu personagem é nocauteado, perde
+          uma medalha e pode até ser rebaixado de categoria.
+        </p>
+
+        <p>
+          <strong>TREINE. EVOLUA. BUSQUE A PERFEIÇÃO.</strong>
+        </p>
+
+        <div class="buttons">
+          <button class="prev-btn">◀ VOLTAR</button>
+          <button id="finish-btn">ENTRAR NO RINGUE ▶</button>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script>
+    const screenWidth = window.innerWidth;
+    const slides = document.querySelectorAll(".slide");
+    const nextBtns = document.querySelectorAll(".next-btn");
+    const prevBtn = document.querySelectorAll(".prev-btn");
+    const progressBar = document.querySelector(".progress-bar");
+    const finishBtn = document.querySelector("#finish-btn");
+    const canMobile = document.querySelectorAll(".can-mobile");
+
+    if (screenWidth < 768) {
+      canMobile[0].textContent =
+        "Utilize o botão ▶ localizado no canto superior esquerdo para iniciar ou pausar a partida quando desejar.";
+
+      canMobile[1].textContent =
+        "Durante o combate, uma seta ➡️ será exibido no centro da tela. Você deverá arrastar a tela na direção correspondente antes que o tempo termine.";
+
+      canMobile[2].textContent =
+        "Utilize o toque na tela para executar os golpes:";
+
+      canMobile[3].innerHTML = `
+      🥊 <strong>⬅️</strong> → Jab<br />
+      🥊 <strong>➡️</strong> → Direto<br />
+      🥊 <strong>⬆️</strong> → Cruzado de esquerda<br />
+      🥊 <strong>⬇️</strong> → Cruzado de direita`;
+    }
+
+    let i = 0;
+    drawSlides();
+
+    nextBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        i++;
+        drawSlides();
+      });
+    });
+
+    prevBtn.forEach((prev) => {
+      prev.addEventListener("click", () => {
+        i--;
+        drawSlides();
+      });
+    });
+
+    finishBtn.addEventListener("click", () => {
+      localStorage.setItem(
+        "firstTime",
+        JSON.stringify({
+          firstTime: true,
+        }),
+      );
+
+      window.location.href = "/index.html";
+    });
+
+    function drawSlides() {
+      slides.forEach((slide) => slide.classList.remove("active"));
+      slides[i].classList.add("active");
+
+      const progress = ((i + 1) / slides.length) * 100;
+      progressBar.style.width = `${progress}%`;
+    }
+  </script>
+</html>

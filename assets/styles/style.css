@@ -1,0 +1,729 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --bordaspixeladas: 3px solid #000000;
+  --transparent-background: rgba(212, 212, 212, 0.8);
+}
+
+body {
+  overflow: hidden;
+  background-color: #a9a9a9;
+}
+
+#cenario {
+  max-width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#start_btn,
+#settings_btn {
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  border-radius: 50%;
+
+  border: var(--bordaspixeladas);
+  padding: 30px;
+
+  background-color: var(--transparent-background);
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#start_btn {
+  top: 8%;
+  right: 20%;
+}
+
+#settings_btn {
+  top: 8%;
+  right: 10%;
+}
+
+#start_btn:hover,
+#settings_btn:hover {
+  background-color: #fff;
+}
+
+#start_btn > img,
+#settings_btn > img {
+  width: 100%;
+}
+
+#settings_view {
+  display: none;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-around;
+
+  width: 450px;
+  height: 480px;
+
+  position: absolute;
+  right: 10%;
+  top: 22%;
+
+  z-index: 1101;
+
+  border: var(--bordaspixeladas);
+  border-radius: 10px;
+  background-color: var(--transparent-background);
+  padding: 20px;
+  cursor: default;
+}
+
+#settings_view > a {
+  background-color: blue;
+  color: #fff;
+  text-decoration: none;
+
+  width: 70%;
+  border-radius: 10px;
+
+  padding: 10px;
+  border: var(--bordaspixeladas);
+  text-align: center;
+}
+
+#settings_view > p {
+  font-weight: bold;
+}
+
+#settings_view > img {
+  object-fit: cover;
+  width: 200px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+#settings_view > #delete-save-game {
+  width: 70%;
+
+  padding: 15px 20px;
+
+  border-radius: 10px;
+  border: var(--bordaspixeladas);
+
+  font-weight: bold;
+
+  background-color: #ff4a4a;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+#settings_view > #delete-save-game:hover {
+  background-color: #ff2828;
+}
+
+#remaining_lives {
+  display: flex;
+  gap: 10.5%;
+  list-style: none;
+
+  position: absolute;
+  top: 9.6%;
+  left: 22%;
+
+  width: 340px;
+
+  border: var(--bordaspixeladas);
+  z-index: 1100;
+
+  padding: 10px;
+
+  border-radius: 10px;
+
+  background-color: var(--transparent-background);
+}
+
+#remaining_lives > li > img {
+  width: 35px;
+}
+
+#infos_player {
+  position: absolute;
+  left: 10%;
+  top: 10%;
+
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+#infos_player > li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 10px;
+  border: var(--bordaspixeladas);
+  background-color: var(--transparent-background);
+  border-radius: 10px;
+
+  width: 150px;
+  cursor: default;
+}
+
+#infos_player > li > #points_suporte_icons {
+  width: 60px;
+  height: 60px;
+  background-image: url("../../images/icons/offensive_icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  position: absolute;
+
+  right: -20px;
+  margin-top: -90px;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#infos_player > li > #points_suporte_icons > p {
+  margin-bottom: -30px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+#infos_player > li > .infos_icon {
+  width: 60px;
+  height: auto;
+}
+
+#infos_player > li > p {
+  font-weight: bold;
+  font-size: 30px;
+
+  width: 100%;
+  text-align: center;
+  color: #000000;
+}
+
+#cenario > #hitBox {
+  display: flex;
+  align-items: end;
+
+  position: absolute;
+  bottom: 100px;
+
+  height: 450px;
+  width: 480px;
+}
+
+#cenario > #hitBox > #personagem > img {
+  object-fit: contain;
+  height: 300px;
+  bottom: 0;
+  position: absolute;
+  z-index: 1001;
+}
+
+#cenario > #hitBox > #saco > img {
+  object-fit: contain;
+  height: 490px;
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+}
+
+#punch_box {
+  width: 100px;
+  height: 100px;
+
+  position: absolute;
+  left: 48%;
+  top: 28%;
+
+  border-radius: 50%;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  background: white;
+
+  z-index: 3;
+}
+
+#luckyAttack {
+  position: relative;
+  z-index: 1;
+
+  font-size: 54px;
+  font-weight: bold;
+}
+
+#punch_box_mobile {
+  width: 60px;
+  height: 60px;
+
+  position: absolute;
+  left: 48%;
+  top: 28%;
+
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 35%;
+}
+
+#luckyAttack_mobile {
+  width: 100%;
+  object-fit: contain;
+}
+
+#redraw-punch-box {
+  position: absolute;
+  display: none;
+
+  width: 120px;
+  height: 120px;
+
+  left: 47.4%;
+  top: 26.5%;
+  border-radius: 50%;
+
+  background-color: #ffffff87;
+
+  overflow: hidden;
+}
+
+#redraw-punch-box > #timer-redraw-punch {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.point_coin {
+  position: absolute;
+  left: 45%;
+  top: 30%;
+  width: 60px;
+
+  animation:
+    morePoint 1s,
+    reviver 0.7s steps(1),
+    sumir 4s forwards;
+}
+
+.lose_point_coin {
+  position: absolute;
+  z-index: 1100;
+  left: 40%;
+  top: 80%;
+  pointer-events: none;
+
+  width: 60px;
+
+  animation: coinLost 1.5s forwards ease-in;
+}
+
+#warning {
+  display: none;
+}
+
+@keyframes redraw {
+  0% {
+    width: 0%;
+    background-color: #04ff00;
+  }
+  100% {
+    width: 100%;
+    background-color: #ff0000;
+  }
+}
+
+@keyframes reviver {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes morePoint {
+  0% {
+    top: 50%;
+  }
+  100% {
+    top: 30%;
+  }
+}
+
+@keyframes sumir {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes spawn {
+  0% {
+    transform: scale(0.01);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes toDescend {
+  100% {
+    top: 80%;
+  }
+}
+
+@keyframes coinLost {
+  0% {
+    transform: translate(-90px, 80%);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-120px, -90px) rotate(-180deg);
+    opacity: 1;
+  }
+  35% {
+    transform: translate(-180px, -20px) rotate(-360deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-250px, -70px) rotate(-540deg);
+    opacity: 1;
+  }
+  65% {
+    transform: translate(-320px, -15px) rotate(-720deg);
+    opacity: 0.9;
+  }
+  80% {
+    transform: translate(-380px, -40px) rotate(-900deg);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-450px, 0px) rotate(-1080deg);
+    opacity: 0;
+  }
+}
+
+@keyframes openSettings {
+  0% {
+    right: -80%;
+  }
+  100% {
+    right: 10%;
+  }
+}
+
+@keyframes closeSettings {
+  0% {
+    right: 10%;
+  }
+  100% {
+    right: -80%;
+  }
+}
+
+/* ── TABLET (768px – 1024px) ──────────────────────────── */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Botões de controle */
+  #start_btn,
+  #settings_btn {
+    width: 64px;
+    height: 64px;
+    padding: 18px;
+  }
+
+  #start_btn {
+    top: 4%;
+    right: 16%;
+  }
+
+  #settings_btn {
+    top: 4%;
+    right: 6%;
+  }
+
+  /* Vidas — centralizado no topo */
+  #remaining_lives {
+    top: 4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    gap: 10%;
+    padding: 8px 16px;
+  }
+
+  #remaining_lives > li > img {
+    width: 32px;
+  }
+
+  /* Infos do jogador — linha horizontal na base */
+  #infos_player {
+    flex-direction: row;
+    left: 50%;
+    top: auto;
+    bottom: 20px;
+    transform: translateX(-50%);
+    gap: 14px;
+  }
+
+  #infos_player > li {
+    width: auto;
+    padding: 10px 14px;
+    gap: 10px;
+  }
+
+  #infos_player > li > .infos_icon {
+    width: 38px;
+  }
+
+  #infos_player > li > p {
+    font-size: 22px;
+    width: auto;
+  }
+
+  /* Personagem e saco — tamanhos intermediários */
+  #cenario > #hitBox {
+    width: 400px;
+    height: 380px;
+    bottom: 40%;
+    transform: translateY(40%);
+  }
+
+  #cenario > #hitBox > #personagem > img {
+    left: -20%;
+    height: 340px;
+  }
+
+  #cenario > #hitBox > #saco > img {
+    height: 490px;
+    bottom: 24px;
+  }
+
+  /* Indicador de golpe */
+  #punch_box {
+    width: 90px;
+    height: 90px;
+    left: 50%;
+    top: 24%;
+    transform: translateX(-50%);
+  }
+
+  #luckyAttack {
+    font-size: 46px;
+  }
+
+  #punch_box_mobile {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 38%;
+  }
+
+  /* Barra de redraw — estilo barra (não círculo) */
+  #redraw-punch-box {
+    top: 34%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 6px;
+    border-radius: 10px;
+  }
+
+  #redraw-punch-box > #timer-redraw-punch {
+    height: 6px;
+  }
+
+  /* Painel de configurações */
+  #settings_view {
+    width: 80%;
+    /* width: 340px; */
+    height: 60%;
+    right: 6%;
+    top: 16%;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  #settings_view > img {
+    width: 300px;
+    max-height: 500px;
+    object-fit: cover;
+  }
+
+  #settings_view > #delete-save-game {
+    width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  #start_btn,
+  #settings_btn {
+    top: 3%;
+    right: auto;
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+  }
+  #start_btn {
+    left: 5%;
+  }
+
+  #settings_btn {
+    right: 5%;
+  }
+
+  #remaining_lives {
+    bottom: auto;
+    top: auto;
+    bottom: 5%;
+
+    width: auto;
+    gap: 30px;
+    padding: 6px 20px;
+  }
+
+  #remaining_lives > li > img {
+    width: 30px;
+  }
+
+  #infos_player {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    top: 12%;
+    bottom: auto;
+    transform: none;
+    gap: 10px;
+    padding: 0 8px;
+  }
+
+  #infos_player > li {
+    width: auto;
+    flex: 1;
+    justify-content: space-around;
+  }
+
+  #infos_player > li > .infos_icon {
+    width: 50px;
+  }
+
+  #infos_player > li > p {
+    font-size: 16px;
+    width: auto;
+  }
+
+  #points_suporte_icons {
+    left: 64%;
+  }
+
+  #cenario > #hitBox {
+    width: 85vw;
+    height: 55vw;
+    bottom: 170px;
+  }
+
+  #cenario > #hitBox > #personagem > img {
+    height: clamp(120px, 55vw, 320px);
+  }
+
+  #cenario > #hitBox > #saco > img {
+    height: clamp(160px, 90vw, 400px);
+    bottom: 30px;
+  }
+
+  #settings_view {
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 90vw;
+    height: 80vh;
+    padding: 14px;
+
+    background-color: #f2f2f2;
+  }
+
+  #settings_view > img {
+    width: fit-content;
+    max-width: 400px;
+    object-fit: contain;
+    height: clamp(160px, 100%, 400px);
+  }
+
+  .point_coin {
+    left: 42%;
+    width: 48px;
+  }
+  .lose_point_coin {
+    left: 35%;
+    width: 48px;
+  }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  #warning {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2000;
+
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #warning > strong {
+    font-weight: bold;
+    font-size: 24px;
+  }
+}
