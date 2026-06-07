@@ -1,6 +1,6 @@
 const firstTime = JSON.parse(localStorage.getItem("firstTime"));
 if (!firstTime?.firstTime) {
-  window.location.href = "/onboarding/welcome.html";
+  window.location.href = "./onboarding/welcome.html";
 }
 
 const toContinue = JSON.parse(localStorage.getItem("dataSave"));
