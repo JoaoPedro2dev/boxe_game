@@ -52,13 +52,13 @@ const mobilePunchIndicator = [
 ];
 
 const audioPunch = new Audio("./sounds/punch.mp3");
-const punchGrunt = new Audio("../../sounds/punchGrunt_1.mp3");
-const playerPunched = new Audio("../../sounds/punchedPlayer.mp3");
-const punchBagPunche = new Audio("../../sounds/punch-bag-punch.mp3");
-const gameOverPlayer = new Audio("../../sounds/game_over_grunt.mp3");
-const morePoint = new Audio("../../sounds/more_point.mp3");
-const losingCoin = new Audio("../../sounds/lose_coin.mp3");
-const nextLevel = new Audio("../../sounds/next-level.mp3");
+const punchGrunt = new Audio("./sounds/punchGrunt_1.mp3");
+const playerPunched = new Audio("./sounds/punchedPlayer.mp3");
+const punchBagPunche = new Audio("./sounds/punch-bag-punch.mp3");
+const gameOverPlayer = new Audio("./sounds/game_over_grunt.mp3");
+const morePoint = new Audio("./sounds/more_point.mp3");
+const losingCoin = new Audio("./sounds/lose_coin.mp3");
+const nextLevel = new Audio("./sounds/next-level.mp3");
 
 let isDisabled = false;
 let isPaused = true;
@@ -316,7 +316,7 @@ function pause(pauseByMneu) {
 
 function drawCenario() {
   if (points <= 10) {
-    cenarioBody.style.backgroundImage = `url("./.${landscapesImgaes[0]}")`;
+    cenarioBody.style.backgroundImage = `url("${landscapesImgaes[0]}")`;
 
     nextCenario = {
       label: "Academia de bairro - Você está evoluindo!",
@@ -327,7 +327,7 @@ function drawCenario() {
     if (nextCenario?.atual < 2) newLevel();
     moreDifficult(400, 2500);
 
-    cenarioBody.style.backgroundImage = `url("../.${landscapesImgaes[1]}")`;
+    cenarioBody.style.backgroundImage = `url("${landscapesImgaes[1]}")`;
     nextCenario = {
       label: "Centro de treinamento Profissional - mais difícil",
       img: landscapesImgaes[2],
@@ -338,7 +338,7 @@ function drawCenario() {
 
     moreDifficult(300, 2000);
 
-    cenarioBody.style.backgroundImage = `url("../.${landscapesImgaes[2]}")`;
+    cenarioBody.style.backgroundImage = `url("${landscapesImgaes[2]}")`;
     nextCenario = {
       label: "Elite GYM - Mais alto nível",
       img: landscapesImgaes[2],
@@ -348,7 +348,7 @@ function drawCenario() {
     if (nextCenario?.atual < 4) newLevel();
     moreDifficult(200, 1500);
 
-    cenarioBody.style.backgroundImage = `url("../.${landscapesImgaes[3]}")`;
+    cenarioBody.style.backgroundImage = `url("${landscapesImgaes[3]}")`;
     nextCenario = {
       label: "Arena de campeonato - Foco máximo!",
       img: landscapesImgaes[3],
@@ -358,7 +358,7 @@ function drawCenario() {
     if (nextCenario?.atual < 5) newLevel();
     moreDifficult(100, 1000);
 
-    cenarioBody.style.backgroundImage = `url("../.${landscapesImgaes[4]}")`;
+    cenarioBody.style.backgroundImage = `url("${landscapesImgaes[4]}")`;
     nextCenario = {
       label: "Você alcançou a Arena de Campeonato!",
       img: "./images/icons/first-place.webp",
