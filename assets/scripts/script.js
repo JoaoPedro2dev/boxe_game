@@ -166,7 +166,7 @@ deleteSaveGameBtn.addEventListener("click", () => {
     wrongPunchesViwer.textContent = wrongPunches;
     drawOffensive();
     window.addEventListener("beforeunload", saveGame);
-    window.location.href = "/onboarding/welcome.html";
+    window.location.href = "./onboarding/welcome.html";
   }
 });
 
